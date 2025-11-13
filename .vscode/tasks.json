@@ -1,0 +1,66 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "编译C程序",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "${file}",
+                "-o",
+                "${workspaceFolder}/out/${fileBasenameNoExtension}",
+                "-Wall",
+                "-g"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": false
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "运行C程序",
+            "type": "shell",
+            "command": "${workspaceFolder}/out/${fileBasenameNoExtension}",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true
+            },
+            "dependsOn": []
+        },
+        {
+            "label": "run C",
+            "dependsOn": [
+                "编译C程序",
+                "运行C程序"
+            ],
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "运行C程序(使用input.txt)",
+            "type": "shell",
+            "command": "${workspaceFolder}/out/${fileBasenameNoExtension} < ${workspaceFolder}/input.txt",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true
+            },
+            "dependsOn": "编译C程序"
+        }
+    ]
+}
+
