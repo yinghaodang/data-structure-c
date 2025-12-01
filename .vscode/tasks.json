@@ -11,7 +11,7 @@
                 "${workspaceFolder}/out/${fileBasenameNoExtension}",
                 "-Wall",
                 "-g",
-                "lm"
+                "-lm"
             ],
             "group": {
                 "kind": "build",
