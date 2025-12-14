@@ -1,4 +1,5 @@
 // 创建节点上存储 字符 的二叉链表
+// 二叉树的遍历
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -89,6 +90,9 @@ void PreOrderTravNoRec(BiTree root, int n) {
 
     while (top >= 0) {
         BiTNode* p = stack[top--];
+        if (p == NULL) {
+            continue;
+        }
         printf("%c ", p->data);
 
         // 先压右子树，再压左子树（保证左子树先被访问）
@@ -240,7 +244,7 @@ BiTree BuildBiTreeRec(char* str) {
 // 正确的实现：传递 i 的指针
 BiTree CreateBiTree(char* str, int* i) {
     BiTree root;
-    if (str[*i] == ' ') {
+    if (str[*i] == ' ' || str[*i] == '\0') {
         (*i)++;  // 跳过空格，移动索引
         root = NULL;
     } else {
